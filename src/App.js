@@ -8,6 +8,7 @@ import Login from "./Components/Login";
 import Cards from "./Components/Cards";
 import CardDetails from "./Components/CardDetails";
 import Header from "./Components/Header";
+import Footer from "./Components/Footer";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route exact path="/cards" component={Cards} />
         <Route exact path="/card/:id" component={CardDetails} />
         <Route exact path="/header" component={Header} />
+        <Route exact path="/footer" component={Footer} />
       </div>
     </Router>
   );

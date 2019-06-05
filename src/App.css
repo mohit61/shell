@@ -33,3 +33,10 @@
     display: none;
   }
 }
+
+/* FOOTER */
+.footer {
+  position: fixed;
+  bottom: -1rem;
+  width: 100%;
+}
