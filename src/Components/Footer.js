@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Footer_RC } from "../ReusableComponents/Footer";
+import { Footer_RC } from "../ReusableComponents/Footer_RC";
 
 class Footer extends Component {
   render() {
