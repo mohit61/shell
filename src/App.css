@@ -1,3 +1,4 @@
+/* CARD */
 .card {
   height: 350px;
   box-shadow: 10px 5px 5px rgb(87, 85, 85);
@@ -10,4 +11,25 @@
 .card:hover {
   box-shadow: 10px 5px 5px rgb(20, 20, 20);
   cursor: pointer;
+}
+
+/* HEADER */
+.navbar {
+  background: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.07);
+}
+
+.navbar-brand > img {
+  height: 50px;
+  width: 200px;
+}
+
+.nav-link {
+  color: #ea6565;
+}
+
+@media screen and (max-width: 600px) {
+  .navbar .navbar-nav {
+    display: none;
+  }
 }
