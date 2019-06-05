@@ -1,26 +1,17 @@
 import React, { Component } from "react";
+import { Footer_RC } from "../ReusableComponents/Footer";
 
 class Footer extends Component {
   render() {
-    // const error = { error: "Server Down" };
-    const error = { error: "" };
+    // WHEN ERROR, WE WILL DISPLAY ERROR
+    const error = { error: "Server Down" };
+    // WHEN NO ERROR, WE WILL DISPLAY SUCCESS
+    // const error = { error: "" };
+
     if (error.error === "") {
-      return (
-        <div className="footer text-center">
-          <div className="alert alert-success">
-            <strong>Success</strong>
-          </div>
-        </div>
-      );
+      return <Footer_RC alert_type="success" message="Success" />;
     } else {
-      return (
-        <div className="footer text-center">
-          <div className="alert alert-danger">
-            <strong>Error : </strong>
-            {error.error}
-          </div>
-        </div>
-      );
+      return <Footer_RC alert_type="danger" message={error.error} />;
     }
   }
 }
