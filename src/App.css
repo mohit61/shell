@@ -53,3 +53,25 @@
 .custom-file {
   width: 25px;
 }
+
+/* INFO PANEL */
+.content1,
+.content2 {
+  border: 1px solid #ddd;
+  height: 100vh;
+}
+
+.content2-after {
+  display: none;
+}
+
+.panel {
+  background: #f8f8f8;
+  border-bottom: 1px solid #ddd;
+  margin-left: -15px;
+}
+
+.cross-btn:focus,
+.cross-btn:active {
+  box-shadow: none !important;
+}

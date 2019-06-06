@@ -10,6 +10,7 @@ import CardDetails from "./Components/CardDetails";
 import Header from "./Components/Header";
 import FooterSite from "./Components/Footer";
 import SearchInput from "./Components/SearchInput";
+import InfoPanel from "./Components/InfoPanel";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route exact path="/header" component={Header} />
         <Route exact path="/footer" component={FooterSite} />
         <Route exact path="/search" component={SearchInput} />
+        <Route exact path="/infoPanel" component={InfoPanel} />
       </div>
     </Router>
   );
