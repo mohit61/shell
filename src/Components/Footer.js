@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Footer_RC } from "../ReusableComponents/Footer_RC";
+import { Footer } from "../ReusableComponents/Footer";
 
-class Footer extends Component {
+class FooterSite extends Component {
   render() {
     // WHEN ERROR, WE WILL DISPLAY ERROR
     const error = { error: "Server Down" };
@@ -9,11 +9,11 @@ class Footer extends Component {
     // const error = { error: "" };
 
     if (error.error === "") {
-      return <Footer_RC alert_type="success" message="Success" />;
+      return <Footer alert_type="success" message="Success" />;
     } else {
-      return <Footer_RC alert_type="danger" message={error.error} />;
+      return <Footer alert_type="danger" message={error.error} />;
     }
   }
 }
 
-export default Footer;
+export default FooterSite;
