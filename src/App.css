@@ -40,3 +40,16 @@
   bottom: -1rem;
   width: 100%;
 }
+
+.footer-dismiss {
+  display: none;
+}
+
+/* SEARCHINPUT */
+.select-content > input {
+  width: 10%;
+}
+
+.custom-file {
+  width: 25px;
+}

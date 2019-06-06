@@ -9,6 +9,7 @@ import Cards from "./Components/Cards";
 import CardDetails from "./Components/CardDetails";
 import Header from "./Components/Header";
 import FooterSite from "./Components/Footer";
+import SearchInput from "./Components/SearchInput";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route exact path="/card/:id" component={CardDetails} />
         <Route exact path="/header" component={Header} />
         <Route exact path="/footer" component={FooterSite} />
+        <Route exact path="/search" component={SearchInput} />
       </div>
     </Router>
   );
