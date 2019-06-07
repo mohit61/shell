@@ -1,3 +1,8 @@
+/* TODO : bootstrap button provides blue box shadow by default, in many place I have used box-shadow: none !important; to remove this.
+in case we do not need it any button we can simply do it in .btn{box-shadow: none !important;} class and that will take care of all the
+buttons we have used.
+*/
+
 /* CARD */
 .card {
   height: 350px;
@@ -47,16 +52,57 @@
 
 /* SEARCHINPUT */
 .select-content > input {
-  width: 10%;
+  width: 10px;
 }
 
-.custom-file {
-  width: 25px;
+/* THIS CLASS IS USED IN ALL FORM INPUTS, USING HERE FOR SEARCH INPUT */
+.form-control {
+  box-shadow: none !important;
+  border-color: #ea6565 !important;
+}
+.form-control::placeholder {
+  color: #ea6565 !important;
+}
+
+.search-box {
+  width: 50% !important;
+  border: 1px solid #ddd;
+  padding: 50px;
+}
+
+.search-form {
+  margin-left: 150px;
+}
+
+.custom-file-label {
+  color: #ea6565 !important;
+  border-color: #ea6565 !important;
+}
+
+.custom-file-label::after {
+  background-color: #ea6565 !important;
+  color: #fff !important;
+}
+
+.search-btn {
+  box-shadow: none !important;
+  background-color: #ea6565 !important;
+}
+
+/* these are the classes of the react-select that is taken from the web-dev tools for modifying the color*/
+.css-2b097c-container,
+.css-tlfecz-indicatorContainer,
+.css-yk16xz-control,
+.css-1wa3eu0-placeholder {
+  border-color: #ea6565 !important;
+  color: #ea6565 !important;
+  box-shadow: none !important;
 }
 
 /* INFO PANEL */
 .content1,
 .content2 {
+  width: 100%;
   border: 1px solid #ddd;
   height: 100vh;
 }
