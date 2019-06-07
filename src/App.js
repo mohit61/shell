@@ -18,7 +18,7 @@ function App() {
   return (
     <Router>
       <div>
-        <Route exact path="/login" component={Login} />
+        <Route exact path="/" component={Login} />
         <Route exact path="/cards" component={Cards} />
         <Route exact path="/card/:id" component={CardDetails} />
         <Route exact path="/header" component={Header} />
@@ -26,7 +26,7 @@ function App() {
         <Route exact path="/search" component={SearchInput} />
         <Route exact path="/infoPanel" component={InfoPanel} />
         <Route exact path="/sidebar" component={Sidebar} />
-        <Route exact path="/" component={Home} />
+        <Route exact path="/home" component={Home} />
       </div>
     </Router>
   );
