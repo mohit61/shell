@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import logo from "../../src/tattle1.svg";
+import logo from "../../src/logo_logomark.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
