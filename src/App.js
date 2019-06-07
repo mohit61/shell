@@ -11,6 +11,7 @@ import Header from "./Components/Header";
 import FooterSite from "./Components/Footer";
 import SearchInput from "./Components/SearchInput";
 import InfoPanel from "./Components/InfoPanel";
+import Sidebar from "./Components/Sidebar";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route exact path="/footer" component={FooterSite} />
         <Route exact path="/search" component={SearchInput} />
         <Route exact path="/infoPanel" component={InfoPanel} />
+        <Route exact path="/sidebar" component={Sidebar} />
       </div>
     </Router>
   );
