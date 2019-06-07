@@ -12,12 +12,13 @@ import FooterSite from "./Components/Footer";
 import SearchInput from "./Components/SearchInput";
 import InfoPanel from "./Components/InfoPanel";
 import Sidebar from "./Components/Sidebar";
+import Home from "./Components/Home";
 
 function App() {
   return (
     <Router>
       <div>
-        <Route exact path="/" component={Login} />
+        <Route exact path="/login" component={Login} />
         <Route exact path="/cards" component={Cards} />
         <Route exact path="/card/:id" component={CardDetails} />
         <Route exact path="/header" component={Header} />
@@ -25,6 +26,7 @@ function App() {
         <Route exact path="/search" component={SearchInput} />
         <Route exact path="/infoPanel" component={InfoPanel} />
         <Route exact path="/sidebar" component={Sidebar} />
+        <Route exact path="/" component={Home} />
       </div>
     </Router>
   );

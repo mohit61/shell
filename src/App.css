@@ -101,18 +101,19 @@ buttons we have used.
 
 /* INFO PANEL */
 .info-panel {
-  margin-right: -15px;
+  width: 250px;
+  position: absolute;
+  right: 0;
+  background: #fff;
 }
 
-.content1,
-.content2 {
-  width: 100%;
+.before {
   border: 1px solid #ddd;
   height: 100vh;
   overflow: hidden;
 }
 
-.content2-after {
+.after {
   display: none;
 }
 
