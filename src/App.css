@@ -100,11 +100,16 @@ buttons we have used.
 }
 
 /* INFO PANEL */
+.info-panel {
+  margin-right: -15px;
+}
+
 .content1,
 .content2 {
   width: 100%;
   border: 1px solid #ddd;
   height: 100vh;
+  overflow: hidden;
 }
 
 .content2-after {
