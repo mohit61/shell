@@ -4,10 +4,9 @@ import { Footer } from "../ReusableComponents/Footer";
 class FooterSite extends Component {
   constructor(props) {
     super(props);
-  }
-
-  closeFooter() {
-    console.log("footer clicked");
+    this.state = {
+      footerClass: "footer text-center"
+    };
   }
 
   render() {
@@ -21,11 +20,27 @@ class FooterSite extends Component {
         <Footer
           alert_type="success"
           message="Success"
-          onClick={this.closeFooter.bind(this)}
+          footerClass={this.state.footerClass}
+          closeFooter={() => {
+            this.setState({
+              footerClass: "footer-dismiss"
+            });
+          }}
         />
       );
     } else {
-      return <Footer alert_type="danger" message={error.error} />;
+      return (
+        <Footer
+          alert_type="danger"
+          message={error.error}
+          footerClass={this.state.footerClass}
+          closeFooter={() => {
+            this.setState({
+              footerClass: "footer-dismiss"
+            });
+          }}
+        />
+      );
     }
   }
 }
