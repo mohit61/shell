@@ -21,7 +21,7 @@ class Sidebar extends Component {
   render() {
     const { toggleClass } = this.state;
     return (
-      <div id="wrapper">
+      <div>
         <div id={toggleClass ? "sidebar-wrapper-toggle" : "sidebar-wrapper"}>
           <ul className="list-group">
             <li className="list-group-item">
@@ -44,9 +44,9 @@ class Sidebar extends Component {
           <div className="container-fluid">
             <div className="row">
               <div className="col-lg-12">
-                <a href="#" onClick={this.toggle}>
+                <button className="btn" onClick={this.toggle}>
                   <FontAwesomeIcon icon={faBars} color="#ea6565" />
-                </a>
+                </button>
                 <h1>Sidebar </h1>
                 <p className="text-wrap">
                   I love apple I love apple I love apple I love apple I love

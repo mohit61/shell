@@ -1,7 +1,7 @@
-/* TODO : bootstrap button provides blue box shadow by default, in many place I have used box-shadow: none !important; to remove this.
-in case we do not need it any button we can simply do it in .btn{box-shadow: none !important;} class and that will take care of all the
-buttons we have used.
-*/
+/*removing custom blue box-shadow from all buttons*/
+.btn {
+  box-shadow: none !important;
+}
 
 /* CARD */
 .card {
@@ -177,6 +177,9 @@ buttons we have used.
   color: #ea6565;
 }
 
+.list-group-item > a:hover {
+  color: #ea6565;
+}
 .list-group > li:hover {
   background-color: #ffe4e4;
 }
