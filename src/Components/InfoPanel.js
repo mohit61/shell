@@ -18,7 +18,7 @@ class InfoPanel extends Component {
 
   render() {
     return (
-      <div className="info-panel">
+      <div className="info-panel mt-1">
         <div className={this.state.col2}>
           <div className="d-flex flex-column">
             <div className="p-4 panel">
