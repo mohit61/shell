@@ -1,11 +1,25 @@
-/*removing default style of all buttons*/
+/*removing default box-shadow of all buttons*/
 .btn {
   box-shadow: none !important;
+}
+
+/*styling for active elements*/
+.active {
+  color: #6b6b6b !important;
+}
+
+/*cursor type of pointer for all links*/
+a:hover {
+  cursor: pointer;
+}
+
+/** LOGIN **/
+.btn-submit {
   background-color: #ea6565 !important;
   color: #fff !important;
 }
 
-/* CARD */
+/** CARD **/
 .card {
   height: 350px;
   box-shadow: 10px 5px 5px rgb(87, 85, 85);
@@ -20,7 +34,7 @@
   cursor: pointer;
 }
 
-/* HEADER */
+/** HEADER **/
 .navbar {
   background: #fff;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.07);
@@ -32,16 +46,17 @@
 }
 
 .nav-link {
-  color: #ea6565;
+  color: #ea6565 !important;
+  font-weight: 800;
 }
 
 @media screen and (max-width: 600px) {
-  .navbar .navbar-nav {
+  .navbar .hide {
     display: none;
   }
 }
 
-/* FOOTER */
+/** FOOTER **/
 .footer {
   position: fixed;
   bottom: -1rem;
@@ -53,7 +68,7 @@
   display: none;
 }
 
-/* SEARCHINPUT */
+/** SEARCHINPUT **/
 .select-content > input {
   width: 10px;
 }
@@ -92,7 +107,7 @@
   background-color: #ea6565 !important;
 }
 
-/* these are the classes of the react-select that is taken from the web-dev tools for modifying the color*/
+/* these are the classes of the react-select that is taken from the web-dev tools for modifying the color */
 .css-2b097c-container,
 .css-tlfecz-indicatorContainer,
 .css-yk16xz-control,
@@ -102,7 +117,7 @@
   box-shadow: none !important;
 }
 
-/* INFO PANEL */
+/** INFO PANEL **/
 .info-panel {
   width: 250px;
   position: absolute;
@@ -131,7 +146,7 @@
   box-shadow: none !important;
 }
 
-/* SIDEBAR */
+/** SIDEBAR **/
 #sidebar-wrapper {
   z-index: 1;
   position: absolute;
