@@ -1,6 +1,8 @@
-/*removing custom blue box-shadow from all buttons*/
+/*removing default style of all buttons*/
 .btn {
   box-shadow: none !important;
+  background-color: #ea6565 !important;
+  color: #fff !important;
 }
 
 /* CARD */
