@@ -21,9 +21,9 @@ class InfoPanel extends Component {
       <div className="info-panel mt-1">
         <div className={this.state.col2}>
           <div className="d-flex flex-column">
-            <div className="p-4 panel">
-              <span className="">INFO PANEL</span>
-              <span className="float-right">
+            <div className="d-flex p-4 panel">
+              <div className="mr-auto align-self-center">INFO PANEL</div>
+              <div className="align-self-center">
                 <button
                   type="button"
                   className="btn cross-btn"
@@ -31,7 +31,7 @@ class InfoPanel extends Component {
                 >
                   <FontAwesomeIcon icon={faTimes} />
                 </button>
-              </span>
+              </div>
             </div>
             <div className="p-4">Election</div>
             <div className="p-4">Report</div>
