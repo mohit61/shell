@@ -117,6 +117,9 @@ a:hover {
   box-shadow: none !important;
 }
 
+.checkbox {
+}
+
 /** INFO PANEL **/
 .info-panel {
   width: 300px;
