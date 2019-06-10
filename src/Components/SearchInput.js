@@ -18,7 +18,7 @@ class SearchInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedOption: "image"
+      selectedOption: "text"
     };
   }
 
