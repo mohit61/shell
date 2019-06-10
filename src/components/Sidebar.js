@@ -15,9 +15,9 @@ class Sidebar extends Component {
 
   toggle(e) {
     e.preventDefault();
-    this.setState(prevState => ({
-      toggleClass: !prevState.toggleClass
-    }));
+    this.setState({
+      toggleClass: !this.state.toggleClass
+    });
   }
 
   render() {

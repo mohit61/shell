@@ -5,16 +5,16 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
 
-//Components
-import Login from "./Components/Login";
-import Cards from "./Components/Cards";
-import CardDetails from "./Components/CardDetails";
-import Header from "./Components/Header";
-import FooterSite from "./Components/Footer";
-import SearchInput from "./Components/SearchInput";
-import InfoPanel from "./Components/InfoPanel";
-import Sidebar from "./Components/Sidebar";
-import Home from "./Components/Home";
+//components
+import Login from "./components/Login";
+import Cards from "./components/Cards";
+import CardDetails from "./components/CardDetails";
+import Header from "./components/Header";
+import FooterSite from "./components/Footer";
+import SearchInput from "./components/SearchInput";
+import InfoPanel from "./components/InfoPanel";
+import Sidebar from "./components/Sidebar";
+import Home from "./components/Home";
 
 function App() {
   return (

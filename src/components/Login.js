@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { HeadingText } from "../ReusableComponents/HeadingText";
-import { EmailField } from "../ReusableComponents/EmailField";
-import { PasswordField } from "../ReusableComponents/PasswordField";
-import { SubmitFormButton } from "../ReusableComponents/SubmitFormButton";
+import { HeadingText } from "../reusableComponents/HeadingText";
+import { EmailField } from "../reusableComponents/EmailField";
+import { PasswordField } from "../reusableComponents/PasswordField";
+import { SubmitFormButton } from "../reusableComponents/SubmitFormButton";
 
 export default class Login extends Component {
   render() {

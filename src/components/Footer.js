@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Footer } from "../ReusableComponents/Footer";
+import { Footer } from "../reusableComponents/Footer";
 
 class FooterSite extends Component {
   constructor(props) {
