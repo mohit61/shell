@@ -62,6 +62,18 @@ a:hover {
   bottom: -1rem;
   width: 100%;
   z-index: 1;
+  animation-name: bantai;
+  animation-duration: 1s;
+}
+
+@keyframes bantai {
+  0% {
+    transform: translateY(40px);
+    border-top: 5px solid #ea6565;
+  }
+  100% {
+    transform: translateY(-2px);
+  }
 }
 
 .footer-dismiss {
