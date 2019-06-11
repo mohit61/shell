@@ -85,25 +85,22 @@ class SearchInput extends Component {
                 <FontAwesomeIcon icon={faSearch} color="#fff" />
               </button>
             </div>
-            <div className="form-check-group form-inline mt-3">
-              <div className="form-check">
-                <label className="form-check-label mr-2">
-                  <div className="test-check">
-                    <input type="checkbox" className="test-check" />
-                  </div>{" "}
-                  text
-                </label>
-              </div>
-              <div className="form-check">
-                <label className="form-check-label mr-2">
-                  <input type="checkbox" className="" /> image
-                </label>
-              </div>
-              <div className="form-check">
-                <label className="form-check-label mr-2">
-                  <input type="checkbox" className="" /> video
-                </label>
-              </div>
+            <div className="form-inline mt-3">
+              <label className="checkbox-box">
+                text
+                <input type="checkbox" />
+                <span className="checkmark" />
+              </label>
+              <label className="checkbox-box">
+                image
+                <input type="checkbox" />
+                <span className="checkmark" />
+              </label>
+              <label className="checkbox-box">
+                video
+                <input type="checkbox" />
+                <span className="checkmark" />
+              </label>
             </div>
           </form>
         </div>
