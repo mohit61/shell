@@ -23,6 +23,12 @@ a:hover {
 .card {
   height: 350px;
   box-shadow: 10px 5px 5px rgb(87, 85, 85);
+  background-color: #ea6565 !important;
+  overflow: auto;
+}
+
+.card-footer {
+  height: 5px !important;
 }
 
 .card > img {
@@ -132,7 +138,10 @@ a:hover {
   box-shadow: none !important;
 }
 
-.checkbox {
+.badge {
+  background-color: #743333 !important;
+  color: #fff;
+  font-size: 15px !important;
 }
 
 /** INFO PANEL **/
