@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
-import Burger from "@animated-burgers/burger-rotate";
-import "@animated-burgers/burger-rotate/dist/styles.css";
 
 class Sidebar extends Component {
   constructor(props) {

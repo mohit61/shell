@@ -68,11 +68,14 @@ a:hover {
 
 @keyframes bantai {
   0% {
-    transform: translateY(40px);
     border-top: 5px solid #ea6565;
+    bottom: -50px;
+  }
+  50% {
+    border-top: 2px solid #ea6565;
   }
   100% {
-    transform: translateY(-2px);
+    bottom: -15px;
   }
 }
 
