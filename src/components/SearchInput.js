@@ -74,7 +74,6 @@ class SearchInput extends Component {
     this.setState({
       content_type: new_list
     });
-    console.log(this.state.content_type);
   }
 
   render() {
