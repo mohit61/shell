@@ -149,7 +149,6 @@ a:hover {
 }
 
 .checkbox-box {
-  display: inline-block;
   padding-left: 30px;
   position: relative;
   cursor: pointer;
@@ -158,7 +157,6 @@ a:hover {
 }
 
 .checkbox-box .checkmark {
-  display: inline-block;
   width: 20px;
   height: 20px;
   border: 1px solid #d4cfcf;
