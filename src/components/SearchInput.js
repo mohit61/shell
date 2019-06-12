@@ -7,6 +7,14 @@ import {
   faCamera,
   faVideo
 } from "@fortawesome/free-solid-svg-icons";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+// action
+import { search } from "../actions/fetchData";
+
+// components
+import { Card } from "../components/Card";
+import Loading from "../components/Loading";
 
 const options = [
   { value: "text", label: <FontAwesomeIcon icon={faFileAlt} /> },
@@ -18,17 +26,59 @@ class SearchInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: "false",
-      selectedOption: "text"
+      loading: false,
+      data: [],
+      selectedOption: "text",
+      content_type: []
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.data) {
+      this.setState({
+        loading: false,
+        data: nextProps.data
+      });
+    }
   }
 
   handleChange(e) {
     this.setState({ selectedOption: e.value });
   }
 
+  onSearch(e) {
+    e.preventDefault();
+    this.setState({
+      loading: true
+    });
+    setTimeout(() => this.props.search(), 2000);
+  }
+
+  displayResults(cards) {
+    return cards.map(card => (
+      <Card
+        key={card.id}
+        card={card}
+        display={this.state.content_type.includes(card.type)}
+      />
+    ));
+  }
+
+  checkboxToggle(e) {
+    const new_list = this.state.content_type;
+    if (new_list.includes(e)) {
+      new_list.splice(new_list.indexOf(e), 1);
+    } else {
+      new_list.push(e);
+    }
+    this.setState({
+      content_type: new_list
+    });
+    console.log(this.state.content_type);
+  }
+
   render() {
-    const { selectedOption } = this.state;
+    const { selectedOption, data } = this.state;
 
     return (
       <div>
@@ -81,120 +131,61 @@ class SearchInput extends Component {
                   </div>
                 </div>
               )}
-              <button className="btn search-btn ml-2" type="button">
+              <button
+                className="btn search-btn ml-2"
+                type="button"
+                onClick={this.onSearch.bind(this)}
+              >
                 <FontAwesomeIcon icon={faSearch} color="#fff" />
               </button>
             </div>
             <div className="form-inline mt-3">
               <label className="checkbox-box">
                 text
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  onClick={() => this.checkboxToggle("text")}
+                />
                 <span className="checkmark" />
               </label>
               <label className="checkbox-box">
                 image
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  onClick={() => this.checkboxToggle("image")}
+                />
                 <span className="checkmark" />
               </label>
               <label className="checkbox-box">
                 video
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  onClick={() => this.checkboxToggle("video")}
+                />
                 <span className="checkmark" />
               </label>
             </div>
           </form>
         </div>
         <div className="search-result container mt-5">
-          <div className="card-columns">
-            <div className="card">
-              <div className="card-body">
-                <img
-                  className="card-img"
-                  src="https://source.unsplash.com/random/302x200"
-                  alt=""
-                />
-              </div>
-              <div className="card-footer">
-                <span className="badge badge-pill  mr-2">tag1</span>
-                <span className="badge badge-pill  mr-2">tag two</span>
-                <span className="badge badge-pill ">tag longer text</span>
-              </div>
-            </div>
-
-            <div className="card text-white text-center">
-              <img
-                className="card-img"
-                src="https://source.unsplash.com/random/1000x300"
-                alt=""
-              />
-              <div className="card-footer">
-                <span className="badge badge-pill  mr-2">tag1</span>
-                <span className="badge badge-pill  mr-2">tag two</span>
-                <span className="badge badge-pill ">tag longer text</span>
-              </div>
-            </div>
-
-            <div className="card text-center">
-              <div className="card-header bg-dark text-white">लोक सभा</div>
-              <div className="card-body">
-                <div className="card-title"> लोक सभा</div>
-                <div className="card-text">
-                  <p>
-                    Lok Sabha Elections to be held on 29th april in Rajasthan
-                  </p>
-                  <p className="text-muted">Navbharat Times Report</p>
-                </div>
-              </div>
-              <div className="card-footer">
-                <span className="badge   mr-2">tag1</span>
-                <span className="badge  mr-2">tag two</span>
-                <span className="badge  ">tag longer text</span>
-              </div>
-            </div>
-            <div className="card text-center">
-              <div className="card-image">
-                <div className="embed-responsive embed-responsive-16by9">
-                  <iframe src="https://www.youtube.com/embed/hZFNVj505HQ" />
-                </div>
-              </div>
-              <div className="card-body">
-                <div className="card-title">Transfer Truth</div>
-                <div className="card-text text-muted">Know more</div>
-              </div>
-              <div className="card-footer">
-                <span className="badge badge-pill  mr-2">tag1</span>
-                <span className="badge badge-pill  mr-2">tag two</span>
-                <span className="badge badge-pill ">tag longer text</span>
-              </div>
-            </div>
-
-            <div className="card text-white">
-              <div className="card-body">
-                <h4 className="card-title">
-                  अमेरिका की इन 5 मशहूर हस्तियों का भारत से है बेहद खास नाता
-                </h4>
-                <p className="card-text">
-                  नई दिल्ली: अमेरिका में भारतीय मूल की कई ऐसी मशहूर हस्तियां
-                  हैं, जिन्होंने अपने क्षेत्र में काफी नाम कमाया और आज दुनिया भर
-                  में मशहूर हैं। हालांकि इनके भारतीय मूल के बारे में कम ही लोगों
-                  को पता है। तो यहां ऐसे ही पांच मशहूर सितारों से मिलिए, जिन्हें
-                  लोग अक्सर अमेरिकी मूल का ही मान बैठते हैं-
-                </p>
-                <p className="card-text">
-                  <small className="text-muted">Last updated 3 mins ago</small>
-                </p>
-              </div>
-              <div className="card-footer">
-                <span className="badge   mr-2">tag1</span>
-                <span className="badge  mr-2">tag two</span>
-                <span className="badge ">tag longer text</span>
-              </div>
-            </div>
-          </div>
+          {this.state.loading ? <Loading /> : null}
+          <div className="card-columns">{this.displayResults(data)}</div>
         </div>
       </div>
     );
   }
 }
 
-export default SearchInput;
+SearchInput.prototypes = {
+  data: PropTypes.array.isRequired,
+  search: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+  data: state.data
+});
+
+export default connect(
+  mapStateToProps,
+  { search }
+)(SearchInput);

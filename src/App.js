@@ -15,6 +15,7 @@ import SearchInput from "./components/SearchInput";
 import InfoPanel from "./components/InfoPanel";
 import Sidebar from "./components/Sidebar";
 import Home from "./components/Home";
+import Loading from "./components/Loading";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route exact path="/infoPanel" component={InfoPanel} />
           <Route exact path="/sidebar" component={Sidebar} />
           <Route exact path="/home" component={Home} />
+          <Route exact path="/loading" component={Loading} />
         </div>
       </Router>
     </Provider>
