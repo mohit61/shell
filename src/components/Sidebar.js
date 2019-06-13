@@ -1,12 +1,18 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+// Components
+import SearchInput from "./SearchInput";
+import ScraperPage from "./ScraperPage";
+import CrowdsourcePage from "./CrowdsourcePage";
+import { SidebarRandomText } from "./SidebarRandomText";
 
 class Sidebar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      toggleClass: false
+      toggleClass: false,
+      content: "text"
     };
     this.toggle = this.toggle.bind(this);
   }
@@ -18,6 +24,23 @@ class Sidebar extends Component {
     });
   }
 
+  sidebarItemSelect(selectedItem) {
+    this.setState({
+      content: selectedItem
+    });
+  }
+
+  contentDisplay(content) {
+    if (content === "search") {
+      return <SearchInput />;
+    } else if (content === "scraper") {
+      return <ScraperPage />;
+    } else if (content === "crowdsource") {
+      return <CrowdsourcePage />;
+    } else {
+      return <SidebarRandomText />;
+    }
+  }
   render() {
     const { toggleClass } = this.state;
     return (
@@ -29,14 +52,23 @@ class Sidebar extends Component {
                 <FontAwesomeIcon icon={faTimes} color="#ea6565" />
               </button>
             </div>
-            <li className="list-group-item">
-              <a href="#">Account</a>
+            <li
+              className="list-group-item"
+              onClick={() => this.sidebarItemSelect("search")}
+            >
+              <a href="#">Search</a>
             </li>
-            <li className="list-group-item">
-              <a href="#">Settings</a>
+            <li
+              className="list-group-item"
+              onClick={() => this.sidebarItemSelect("scraper")}
+            >
+              <a href="#">Scraper</a>
             </li>
-            <li className="list-group-item">
-              <a href="#">Logout</a>
+            <li
+              className="list-group-item"
+              onClick={() => this.sidebarItemSelect("crowdsource")}
+            >
+              <a href="#">Crowdsource</a>
             </li>
           </ul>
         </div>
@@ -54,18 +86,7 @@ class Sidebar extends Component {
           <div className="container-fluid">
             <div className="row">
               <div className="col-lg-12">
-                <h1>Sidebar </h1>
-                <p className="text-wrap">
-                  I love apple I love apple I love apple I love apple I love
-                  apple I love apple I love apple I love apple I love apple I
-                  love apple I love apple I love apple I love apple I love apple
-                  I love apple I love apple I love apple I love apple I love
-                  apple I love apple I love apple I love apple I love apple I
-                  love apple I love apple I love apple I love apple I love apple
-                  I love apple I love apple I love apple I love apple I love
-                  apple I love apple I love apple I love apple I love apple I
-                  love apple I love apple
-                </p>
+                {this.contentDisplay(this.state.content)}
               </div>
             </div>
           </div>

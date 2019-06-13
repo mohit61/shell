@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import { HeadingOne } from "../reusableComponents/HeadingOne";
 
 class Loading extends Component {
   render() {
     return (
       <div className="card-columns">
+        <HeadingOne text="Scene kya hai bro!" />
         <div className="card bg-white">
           <div className="card-body">
             <div className="tags mb-2">

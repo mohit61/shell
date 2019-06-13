@@ -2,8 +2,23 @@ import React, { Component } from "react";
 import logo from "../../src/logo_logomark.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faHome } from "@fortawesome/free-solid-svg-icons";
+import Popup from "reactjs-popup";
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      popup: false
+    };
+  }
+
+  userPopup() {
+    this.setState({
+      popup: !this.state.popup
+    });
+    console.log(this.state.popup);
+  }
+
   render() {
     return (
       <div>
@@ -27,9 +42,30 @@ class Header extends Component {
                 <a className="active">abcc</a>
               </li>
             </ul>
-            <a className="nav-link">
-              <FontAwesomeIcon icon={faUser} color="#ea6565" />
-            </a>
+            <Popup
+              on={"hover"}
+              trigger={
+                <a
+                  className="nav-link"
+                  onMouseEnter={this.userPopup.bind(this)}
+                  onMouseLeave={this.userPopup.bind(this)}
+                >
+                  <FontAwesomeIcon icon={faUser} color="#ea6565" />
+                </a>
+              }
+              position="bottom right"
+            >
+              <div>
+                <ul className="list-group">
+                  <li className="list-group-item">
+                    <a href="#">Profile</a>
+                  </li>
+                  <li className="list-group-item">
+                    <a href="#">Logout</a>
+                  </li>
+                </ul>
+              </div>
+            </Popup>
           </div>
         </nav>
         <nav className="navbar d-lg-none d-md-none d-sm-none justify-content-center">

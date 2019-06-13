@@ -15,6 +15,7 @@ import { search } from "../actions/fetchData";
 // components
 import { Card } from "../components/Card";
 import Loading from "../components/Loading";
+import Spinner from "../components/Spinner";
 
 const options = [
   { value: "text", label: <FontAwesomeIcon icon={faFileAlt} /> },
@@ -51,7 +52,7 @@ class SearchInput extends Component {
     this.setState({
       loading: true
     });
-    setTimeout(() => this.props.search(), 2000);
+    setTimeout(() => this.props.search(), 5000);
   }
 
   displayResults(cards) {
@@ -81,7 +82,7 @@ class SearchInput extends Component {
 
     return (
       <div>
-        <div className="container search-box mx-auto mt-5">
+        <div className="container search-box">
           <form className="search-form">
             <div className="form-inline">
               <Select
@@ -167,7 +168,10 @@ class SearchInput extends Component {
           </form>
         </div>
         <div className="search-result container mt-5">
-          {this.state.loading ? <Loading /> : null}
+          {/* empty cards for loading */}
+          {/* {this.state.loading ? <Loading /> : null} */}
+          {/* spinner for loading */}
+          {this.state.loading ? <Spinner /> : null}
           <div className="card-columns">{this.displayResults(data)}</div>
         </div>
       </div>

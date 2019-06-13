@@ -1,3 +1,86 @@
+/* Text Styles */
+@font-face {
+  font-family: VisbyRoundCF-Bold;
+  src: url("./fonts/VisbyRoundv1.7w/Webfont/VisbyRoundCF-Bold.eot");
+  src: url("./fonts/VisbyRoundv1.7w/Webfont/VisbyRoundCF-Bold.woff")
+      format("woff"),
+    url("./fonts/VisbyRoundv1.7w/OTF/VisbyRoundCF-Bold.otf") format("opentype");
+}
+@font-face {
+  font-family: VisbyRoundCF-DemiBold;
+  src: url("./fonts/VisbyRoundv1.7w/Webfont/VisbyRoundCF-DemiBold.eot");
+  src: url("./fonts/VisbyRoundv1.7w/Webfont/VisbyRoundCF-DemiBold.woff")
+      format("woff"),
+    url("./fonts/VisbyRoundv1.7w/OTF/VisbyRoundCF-DemiBold.otf")
+      format("opentype");
+}
+
+@font-face {
+  font-family: VisbyRoundCF-Regular;
+  src: url("./fonts/VisbyRoundv1.7w/Webfont/VisbyRoundCF-Regular.eot");
+  src: url("./fonts/VisbyRoundv1.7w/Webfont/VisbyRoundCF-Regular.woff")
+      format("woff"),
+    url("./fonts/VisbyRoundv1.7w/OTF/VisbyRoundCF-Regular.otf")
+      format("opentype");
+}
+
+@font-face {
+  font-family: VisbyRoundCF-Medium;
+  src: url("./fonts/VisbyRoundv1.7w/Webfont/VisbyRoundCF-Medium.eot");
+  src: url("./fonts/VisbyRoundv1.7w/Webfont/VisbyRoundCF-Medium.woff")
+      format("woff"),
+    url("./fonts/VisbyRoundv1.7w/OTF/VisbyRoundCF-Medium.otf")
+      format("opentype");
+}
+
+.heading1 {
+  font-family: VisbyRoundCF-Bold;
+  font-size: 32px;
+  color: rgba(77, 177, 249, 0.8);
+  letter-spacing: -0.3px;
+}
+.heading2 {
+  font-family: VisbyRoundCF-Bold;
+  font-size: 28px;
+  color: rgba(77, 177, 249, 0.8);
+  letter-spacing: -0.3px;
+}
+.heading3 {
+  font-family: VisbyRoundCF-Bold;
+  font-size: 26px;
+  color: rgba(77, 177, 249, 0.8);
+  letter-spacing: -0.3px;
+}
+.subheading1 {
+  font-family: VisbyRoundCF-DemiBold;
+  font-size: 28px;
+  color: rgba(77, 177, 249, 0.8);
+  letter-spacing: -0.82px;
+}
+.subheading2 {
+  font-family: VisbyRoundCF-DemiBold;
+  font-size: 24px;
+  color: rgba(77, 177, 249, 0.8);
+  letter-spacing: -0.82px;
+}
+.body1 {
+  font-family: VisbyRoundCF-Regular;
+  font-size: 20px;
+  color: rgba(77, 177, 249, 0.8);
+  letter-spacing: -0.03px;
+}
+.body2 {
+  font-family: VisbyRoundCF-Regular;
+  font-size: 18px;
+  color: rgba(77, 177, 249, 0.8);
+  letter-spacing: -0.03px;
+}
+.caption {
+  font-family: VisbyRoundCF-Medium;
+  font-size: 16px;
+  color: rgba(77, 177, 249, 0.8);
+  letter-spacing: 0.1px;
+}
 /*removing default box-shadow of all buttons*/
 .btn {
   box-shadow: none !important;
@@ -105,9 +188,8 @@ a:hover {
 }
 
 .search-box {
-  width: 50% !important;
-  border: 1px solid #ddd;
   padding: 50px;
+  margin-left: 5% !important;
 }
 
 .search-form {
@@ -248,17 +330,19 @@ a:hover {
 
 /* Always take up entire screen */
 #page-content-wrapper {
+  height: 100vh;
   position: absolute;
   padding: 15px;
-  border: 1px solid rgb(138, 138, 144);
+  /* border: 1px solid rgb(138, 138, 144); */
   margin: 2px;
 }
 
 /* Since we added left padding, we need to shrink the width by 250px */
 #page-content-wrapper-toggle {
+  height: 100vh;
   position: absolute;
   padding: 15px;
-  border: 1px solid rgb(138, 138, 144);
+  /* border: 1px solid rgb(138, 138, 144); */
   padding-left: 25px;
   margin: 2px;
   margin-left: 254px;
