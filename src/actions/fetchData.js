@@ -1,10 +1,15 @@
-import { ERRORS } from "./types";
-import { DATA } from "./types";
+import { ERRORS, DATA, CONTENT_LOADING } from "./types";
 
 export const error = () => {
   return {
     type: ERRORS,
     payload: "Content not found"
+  };
+};
+
+export const contentLoading = () => {
+  return {
+    type: CONTENT_LOADING
   };
 };
 

@@ -9,8 +9,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-// action
-import { search } from "../actions/fetchData";
+// actions
+import { search, contentLoading } from "../actions/fetchData";
 
 // components
 import { Card } from "../components/Card";
@@ -35,10 +35,10 @@ class SearchInput extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.data) {
+    if (nextProps.fetch) {
       this.setState({
-        loading: false,
-        data: nextProps.data
+        data: nextProps.fetch.data,
+        loading: nextProps.fetch.loading
       });
     }
   }
@@ -49,10 +49,11 @@ class SearchInput extends Component {
 
   onSearch(e) {
     e.preventDefault();
+    this.props.contentLoading();
+    setTimeout(() => this.props.search(), 3000);
     this.setState({
-      loading: true
+      loading: false
     });
-    setTimeout(() => this.props.search(), 5000);
   }
 
   displayResults(cards) {
@@ -79,7 +80,6 @@ class SearchInput extends Component {
 
   render() {
     const { selectedOption, data } = this.state;
-
     return (
       <div>
         <div className="container search-box">
@@ -181,14 +181,15 @@ class SearchInput extends Component {
 
 SearchInput.prototypes = {
   data: PropTypes.array.isRequired,
-  search: PropTypes.func.isRequired
+  search: PropTypes.func.isRequired,
+  contentLoading: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  data: state.data
+  fetch: state.fetch
 });
 
 export default connect(
   mapStateToProps,
-  { search }
+  { search, contentLoading }
 )(SearchInput);

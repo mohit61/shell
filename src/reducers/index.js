@@ -4,5 +4,5 @@ import dataReducer from "./dataReducer";
 
 export default combineReducers({
   errors: errorReducer,
-  data: dataReducer
+  fetch: dataReducer
 });
