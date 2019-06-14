@@ -1,22 +1,39 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import logo from "../../src/logo_logomark.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faHome } from "@fortawesome/free-solid-svg-icons";
 import Popup from "reactjs-popup";
+// List Item can be moved to reusable components
+import { ListItem } from "./ListItem";
 
 class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      popup: false
+      popup: false,
+      breadcrumbs: []
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.breadcrumbs) {
+      this.setState({
+        breadcrumbs: nextProps.breadcrumbs
+      });
+    }
   }
 
   userPopup() {
     this.setState({
       popup: !this.state.popup
     });
-    console.log(this.state.popup);
+  }
+
+  breadcrumbInHeader() {
+    return this.props.breadcrumbs.map(breadcrumb => (
+      <ListItem key={breadcrumb} breadcrumb={breadcrumb} />
+    ));
   }
 
   render() {
@@ -30,17 +47,10 @@ class Header extends Component {
             <ul className="navbar-nav hide">
               <li className="nav-item">
                 <a className="nav-link" href="#">
-                  Tattle &raquo;
+                  <FontAwesomeIcon icon={faHome} color="#ea6565" /> &raquo;
                 </a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Search &raquo;
-                </a>
-              </li>
-              <li className="nav-item nav-link">
-                <a className="active">abcc</a>
-              </li>
+              {this.breadcrumbInHeader()}
             </ul>
             <Popup
               on={"hover"}
@@ -86,4 +96,11 @@ class Header extends Component {
   }
 }
 
-export default Header;
+const mapStateToProps = state => ({
+  breadcrumbs: state.breadcrumbs
+});
+
+export default connect(
+  mapStateToProps,
+  {}
+)(Header);

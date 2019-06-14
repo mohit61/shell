@@ -1,11 +1,17 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import PropTypes from "prop-types";
+
 // Components
 import SearchInput from "./SearchInput";
 import ScraperPage from "./ScraperPage";
 import CrowdsourcePage from "./CrowdsourcePage";
 import { SidebarRandomText } from "./SidebarRandomText";
+
+//actions
+import { breadcrumbsAdd } from "../actions/breadcrumbs";
 
 class Sidebar extends Component {
   constructor(props) {
@@ -28,6 +34,7 @@ class Sidebar extends Component {
     this.setState({
       content: selectedItem
     });
+    this.props.breadcrumbsAdd(selectedItem);
   }
 
   contentDisplay(content) {
@@ -96,4 +103,11 @@ class Sidebar extends Component {
   }
 }
 
-export default Sidebar;
+Sidebar.prototypes = {
+  breadcrumbsAdd: PropTypes.func.isRequired
+};
+
+export default connect(
+  null,
+  { breadcrumbsAdd }
+)(Sidebar);
