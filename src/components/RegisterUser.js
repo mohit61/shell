@@ -1,9 +1,12 @@
 import React, { Component } from "react";
-import { SubmitFormButton } from "../reusableComponents/SubmitFormButton";
 import { TextFieldGroup } from "../reusableComponents/TextFieldGroup";
-import { HeadingText } from "../reusableComponents/HeadingText";
 import { Dropdown } from "../reusableComponents/Dropdown";
 import { UploadInput } from "../reusableComponents/UploadInput";
+
+import {
+  HeadingText,
+  SubmitFormButton
+} from '../reusableComponents'
 
 class RegisterUser extends Component {
   constructor(props) {

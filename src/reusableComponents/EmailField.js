@@ -1,6 +1,6 @@
 import React from "react";
 
-export const EmailField = props => {
+export default props => {
   return (
     <div className="form-group">
       <input

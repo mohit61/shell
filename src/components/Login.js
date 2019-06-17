@@ -1,8 +1,12 @@
 import React, { Component } from "react";
-import { HeadingText } from "../reusableComponents/HeadingText";
-import { EmailField } from "../reusableComponents/EmailField";
-import { PasswordField } from "../reusableComponents/PasswordField";
-import { SubmitFormButton } from "../reusableComponents/SubmitFormButton";
+
+import {
+  HeadingText,
+  SubHeadingOne,
+  EmailField,
+  PasswordField,
+  SubmitFormButton
+} from '../reusableComponents'
 
 export default class Login extends Component {
   render() {
@@ -10,7 +14,7 @@ export default class Login extends Component {
       <div className="container">
         <div className="col-lg-8 m-auto">
           <HeadingText text="Log In" />
-          <p className="lead text-center">Sign in to your Tattle account</p>
+          <SubHeadingOne text="Unlock your tools to fight Fake News"/>
           <form>
             <EmailField email_placeholder="Email" />
             <PasswordField password_placeholder="Password" />
