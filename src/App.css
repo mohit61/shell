@@ -89,6 +89,7 @@
 .hide-always {
   display: none;
 }
+
 /*styling for active elements*/
 .active {
   color: #6b6b6b !important;
@@ -183,6 +184,7 @@ a:hover {
 
 /* THIS CLASS IS USED IN ALL FORM INPUTS, USING HERE FOR SEARCH INPUT */
 .form-control {
+  color: #ea6565 !important;
   box-shadow: none !important;
   border-color: #ea6565 !important;
 }

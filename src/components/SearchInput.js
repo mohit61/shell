@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import Select from "react-select";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -7,8 +7,11 @@ import {
   faCamera,
   faVideo
 } from "@fortawesome/free-solid-svg-icons";
+
 import { connect } from "react-redux";
+
 import PropTypes from "prop-types";
+
 // actions
 import { search, contentLoading } from "../actions/fetchData";
 
@@ -16,6 +19,7 @@ import { search, contentLoading } from "../actions/fetchData";
 import { Card } from "../components/Card";
 import Loading from "../components/Loading";
 import Spinner from "../components/Spinner";
+import { UploadInput } from "../reusableComponents/UploadInput";
 
 const options = [
   { value: "text", label: <FontAwesomeIcon icon={faFileAlt} /> },
@@ -23,163 +27,117 @@ const options = [
   { value: "video", label: <FontAwesomeIcon icon={faVideo} /> }
 ];
 
-class SearchInput extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: false,
-      data: [],
-      selectedOption: "text",
-      content_type: []
-    };
-  }
+function SearchInput(props) {
+  const [selectedOption, setSelectedOption] = useState("text");
+  const [content_type, setContent_type] = useState([]);
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.fetch) {
-      this.setState({
-        data: nextProps.fetch.data,
-        loading: nextProps.fetch.loading
-      });
-    }
-  }
+  const handleChange = e => {
+    setSelectedOption(e.value);
+  };
 
-  handleChange(e) {
-    this.setState({ selectedOption: e.value });
-  }
-
-  onSearch(e) {
+  const onSearch = e => {
     e.preventDefault();
-    this.props.contentLoading();
-    setTimeout(() => this.props.search(), 3000);
-    this.setState({
-      loading: false
-    });
-  }
+    props.contentLoading();
+    setTimeout(() => props.search(), 3000);
+    contentLoading();
+  };
 
-  displayResults(cards) {
+  const displayResults = cards => {
     return cards.map(card => (
       <Card
         key={card.id}
         card={card}
-        display={this.state.content_type.includes(card.type)}
+        display={content_type.includes(card.type)}
       />
     ));
-  }
+  };
 
-  checkboxToggle(e) {
-    const new_list = this.state.content_type;
+  // useEffect(() => {
+  //   console.log("fired");
+  //   // return displayResults(props.fetch.data);
+  // }, [content_type]);
+
+  const checkboxToggle = e => {
+    const new_list = content_type;
     if (new_list.includes(e)) {
       new_list.splice(new_list.indexOf(e), 1);
     } else {
       new_list.push(e);
     }
-    this.setState({
-      content_type: new_list
-    });
-  }
+    setContent_type(new_list);
+  };
 
-  render() {
-    const { selectedOption, data } = this.state;
-    return (
-      <div>
-        <div className="container search-box">
-          <form className="search-form">
-            <div className="form-inline">
-              <Select
-                className="mr-2"
-                placeholder={<FontAwesomeIcon icon={faFileAlt} />}
-                value={selectedOption}
-                onChange={this.handleChange.bind(this)}
-                options={options}
-              />
-              {this.state.selectedOption === "text" ? (
-                <div className="search-content">
-                  <input
-                    className="form-control mr-2"
-                    type="text"
-                    id="search-input"
-                    placeholder="Search"
-                  />
-                </div>
-              ) : this.state.selectedOption === "image" ? (
-                <div className="search-content">
-                  <div className="custom-file  search-content">
-                    <input
-                      className="custom-file-input"
-                      type="file"
-                      id="myfile"
-                    />
-                    <label
-                      className="custom-file-label p-auto"
-                      htmlFor="myfile"
-                    >
-                      Upload Image
-                    </label>
-                  </div>
-                </div>
-              ) : (
-                <div className="search-content">
-                  <div className="custom-file ">
-                    <input
-                      className="custom-file-input"
-                      type="file"
-                      id="myfile"
-                    />
-                    <label className="custom-file-label" htmlFor="myfile">
-                      Upload Video
-                    </label>
-                  </div>
-                </div>
-              )}
-              <button
-                className="btn search-btn ml-2"
-                type="button"
-                onClick={this.onSearch.bind(this)}
-              >
-                <FontAwesomeIcon icon={faSearch} color="#fff" />
-              </button>
-            </div>
-            <div className="form-inline mt-3">
-              <label className="checkbox-box">
-                text
+  // const { selectedOption, data } = state;
+  // const  data = props.fetch.data;
+  return (
+    <div>
+      <div className="container search-box">
+        <form className="search-form">
+          <div className="form-inline">
+            <Select
+              className="mr-2"
+              placeholder={<FontAwesomeIcon icon={faFileAlt} />}
+              value={selectedOption}
+              onChange={handleChange}
+              options={options}
+            />
+            {selectedOption === "text" ? (
+              <div className="search-content">
                 <input
-                  type="checkbox"
-                  onClick={() => this.checkboxToggle("text")}
+                  className="form-control mr-2"
+                  type="text"
+                  id="search-input"
+                  placeholder="Search"
                 />
-                <span className="checkmark" />
-              </label>
-              <label className="checkbox-box">
-                image
-                <input
-                  type="checkbox"
-                  onClick={() => this.checkboxToggle("image")}
-                />
-                <span className="checkmark" />
-              </label>
-              <label className="checkbox-box">
-                video
-                <input
-                  type="checkbox"
-                  onClick={() => this.checkboxToggle("video")}
-                />
-                <span className="checkmark" />
-              </label>
-            </div>
-          </form>
-        </div>
-        <div className="search-result container mt-5">
-          {/* empty cards for loading */}
-          {/* {this.state.loading ? <Loading /> : null} */}
-          {/* spinner for loading */}
-          {this.state.loading ? <Spinner /> : null}
-          <div className="card-columns">{this.displayResults(data)}</div>
-        </div>
+              </div>
+            ) : selectedOption === "image" ? (
+              <div className="search-content">
+                <UploadInput label="Upload Image" />
+              </div>
+            ) : (
+              <div className="search-content">
+                <UploadInput label="Upload Video" />
+              </div>
+            )}
+            <button
+              className="btn search-btn ml-2"
+              type="button"
+              onClick={onSearch}
+            >
+              <FontAwesomeIcon icon={faSearch} color="#fff" />
+            </button>
+          </div>
+          <div className="form-inline mt-3">
+            <label className="checkbox-box">
+              text
+              <input type="checkbox" onClick={() => checkboxToggle("text")} />
+              <span className="checkmark" />
+            </label>
+            <label className="checkbox-box">
+              image
+              <input type="checkbox" onClick={() => checkboxToggle("image")} />
+              <span className="checkmark" />
+            </label>
+            <label className="checkbox-box">
+              video
+              <input type="checkbox" onClick={() => checkboxToggle("video")} />
+              <span className="checkmark" />
+            </label>
+          </div>
+        </form>
       </div>
-    );
-  }
+      <div className="search-result container mt-5">
+        {/* empty cards for loading */}
+        {/* {props.fetch.loading ? <Loading /> : null} */}
+        {/* spinner for loading */}
+        {props.fetch.loading ? <Spinner /> : null}
+        <div className="card-columns">{displayResults(props.fetch.data)}</div>
+      </div>
+    </div>
+  );
 }
 
-SearchInput.prototypes = {
+SearchInput.propTypes = {
   data: PropTypes.array.isRequired,
   search: PropTypes.func.isRequired,
   contentLoading: PropTypes.func.isRequired

@@ -16,6 +16,7 @@ import InfoPanel from "./components/InfoPanel";
 import Sidebar from "./components/Sidebar";
 import Home from "./components/Home";
 import Loading from "./components/Loading";
+import RegisterUser from "./components/RegisterUser";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route exact path="/sidebar" component={Sidebar} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/loading" component={Loading} />
+          <Route exact path="/register" component={RegisterUser} />
         </div>
       </Router>
     </Provider>

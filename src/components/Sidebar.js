@@ -103,7 +103,7 @@ class Sidebar extends Component {
   }
 }
 
-Sidebar.prototypes = {
+Sidebar.propTypes = {
   breadcrumbsAdd: PropTypes.func.isRequired
 };
 

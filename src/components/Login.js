@@ -9,7 +9,7 @@ export default class Login extends Component {
     return (
       <div className="container">
         <div className="col-lg-8 m-auto">
-          <HeadingText heading="Log In" />
+          <HeadingText text="Log In" />
           <p className="lead text-center">Sign in to your Tattle account</p>
           <form>
             <EmailField email_placeholder="Email" />
