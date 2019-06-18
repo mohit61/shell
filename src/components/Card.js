@@ -3,7 +3,7 @@ import React from "react";
 export const Card = props => {
   if (props.card.type === "text" && props.display) {
     return (
-      <div className="card text-center">
+      <div className="card card-modify text-center">
         {/* <div className="card-header bg-dark text-white">Card with Text</div> */}
         <div className="card-body">
           {/* <div className="card-title"> Lok Sabha elections</div> */}
@@ -11,7 +11,7 @@ export const Card = props => {
             <p>{props.card.data}</p>
           </div>
         </div>
-        <div className="card-footer">
+        <div className="card-footer  card-modify-footer">
           {props.card.tags.map(tag => (
             <span className="badge badge-pill  mr-2">{tag}</span>
           ))}
@@ -20,9 +20,9 @@ export const Card = props => {
     );
   } else if (props.card.type === "image" && props.display) {
     return (
-      <div className="card text-white text-center">
+      <div className="card  card-modify text-white text-center">
         <img className="card-img" src={props.card.url} alt="" />
-        <div className="card-footer">
+        <div className="card-footer  card-modify-foooter">
           {props.card.tags.map(tag => (
             <span className="badge badge-pill  mr-2">{tag}</span>
           ))}
@@ -31,7 +31,7 @@ export const Card = props => {
     );
   } else if (props.card.type === "video" && props.display) {
     return (
-      <div className="card text-center">
+      <div className="card  card-modify text-center">
         <div className="card-image">
           <div className="embed-responsive embed-responsive-16by9">
             <iframe src={props.card.url} />
@@ -40,7 +40,7 @@ export const Card = props => {
         <div className="card-body">
           {/* <div className="card-title">Transfer Truth</div> */}
         </div>
-        <div className="card-footer">
+        <div className="card-footer  card-modify-footer">
           {props.card.tags.map(tag => (
             <span className="badge badge-pill  mr-2">{tag}</span>
           ))}

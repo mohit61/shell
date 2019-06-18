@@ -17,6 +17,7 @@ import Sidebar from "./components/Sidebar";
 import Home from "./components/Home";
 import Loading from "./components/Loading";
 import RegisterUser from "./components/RegisterUser";
+import Users from "./components/Users";
 
 function App() {
   return (
@@ -27,13 +28,14 @@ function App() {
           <Route exact path="/cards" component={Cards} />
           <Route exact path="/card/:id" component={CardDetails} />
           <Route exact path="/header" component={Header} />
-          <Route exact path="/footer" component={FooterSite} />
+          <Route path="/" component={FooterSite} />
           <Route exact path="/search" component={SearchInput} />
           <Route exact path="/infoPanel" component={InfoPanel} />
           <Route exact path="/sidebar" component={Sidebar} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/loading" component={Loading} />
           <Route exact path="/register" component={RegisterUser} />
+          <Route exact path="/users" component={Users} />
         </div>
       </Router>
     </Provider>

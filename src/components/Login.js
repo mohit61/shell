@@ -5,22 +5,22 @@ import {
   EmailField,
   PasswordField,
   SubmitFormButton
-} from '../reusableComponents'
+} from "../reusableComponents";
 
 export default props => (
-    <div className="container-fluid" style={styles.container}>
-      <HeadingText text="Log In" />
-      <SubHeadingOne text="Unlock your tools to fight Fake News"/>
-      <form>
-        <EmailField email_placeholder="Email" />
-        <PasswordField password_placeholder="Password" />
-        <SubmitFormButton submit_button_text="Submit" />
-      </form>
-    </div>
-)
+  <div className="container-fluid" style={styles.container}>
+    <HeadingText text="Log In" />
+    <SubHeadingOne text="Unlock your tools to fight Fake News" />
+    <form>
+      <EmailField email_placeholder="Email" />
+      <PasswordField password_placeholder="Password" />
+      <SubmitFormButton text="Submit" colored={true} />
+    </form>
+  </div>
+);
 
-const styles={
-  container : {
-    width: '40rem'
+const styles = {
+  container: {
+    width: "40rem"
   }
-}
+};

@@ -1,9 +1,9 @@
 import { ERRORS, DATA, CONTENT_LOADING } from "./types";
 
-export const error = () => {
+export const error = error => {
   return {
     type: ERRORS,
-    payload: "Content not found"
+    payload: error
   };
 };
 

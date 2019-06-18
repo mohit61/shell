@@ -13,13 +13,36 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 // actions
-import { search, contentLoading } from "../actions/fetchData";
+import { search, contentLoading, error } from "../actions/fetchData";
 
 // components
 import { Card } from "../components/Card";
 import Loading from "../components/Loading";
 import Spinner from "../components/Spinner";
 import { UploadInput } from "../reusableComponents/UploadInput";
+
+// Capability file for this component
+// import { SearchInputCapabilities } from "./SearchInputCapabilities";
+//const accessibility = <SearchInputCapabilities role={props.user.role} />;
+
+function SearchInputCapabilities(role) {
+  switch (role) {
+    case "SUPER_ADMINISTRATOR":
+      return true;
+    case "ADMINISTRATOR":
+      return true;
+    case "EDITOR":
+      return true;
+    case "AUTHOR":
+      return true;
+    case "CONTRIBUTOR":
+      return false;
+    case "SUBSCRIBER":
+      return false;
+    default:
+      return false;
+  }
+}
 
 const options = [
   { value: "text", label: <FontAwesomeIcon icon={faFileAlt} /> },
@@ -28,6 +51,9 @@ const options = [
 ];
 
 function SearchInput(props) {
+  const accessibility = SearchInputCapabilities(props.user.role);
+  console.log("accessibility ", accessibility);
+
   const [selectedOption, setSelectedOption] = useState("text");
   const [content_type, setContent_type] = useState([]);
 
@@ -67,87 +93,99 @@ function SearchInput(props) {
     setContent_type(new_list);
   };
 
-  // const { selectedOption, data } = state;
-  // const  data = props.fetch.data;
-  return (
-    <div>
-      <div className="container search-box">
-        <form className="search-form">
-          <div className="form-inline">
-            <Select
-              className="mr-2"
-              placeholder={<FontAwesomeIcon icon={faFileAlt} />}
-              value={selectedOption}
-              onChange={handleChange}
-              options={options}
-            />
-            {selectedOption === "text" ? (
-              <div className="search-content">
+  if (accessibility) {
+    return (
+      <div>
+        <div className="container search-box">
+          <form className="search-form">
+            <div className="form-inline">
+              <Select
+                className="mr-2"
+                placeholder={<FontAwesomeIcon icon={faFileAlt} />}
+                value={selectedOption}
+                onChange={handleChange}
+                options={options}
+              />
+              {selectedOption === "text" ? (
+                <div className="search-content">
+                  <input
+                    className="form-control mr-2"
+                    type="text"
+                    id="search-input"
+                    placeholder="Search"
+                  />
+                </div>
+              ) : selectedOption === "image" ? (
+                <div className="search-content">
+                  <UploadInput label="Upload Image" />
+                </div>
+              ) : (
+                <div className="search-content">
+                  <UploadInput label="Upload Video" />
+                </div>
+              )}
+              <button
+                className="btn search-btn ml-2"
+                type="button"
+                onClick={onSearch}
+              >
+                <FontAwesomeIcon icon={faSearch} color="#fff" />
+              </button>
+            </div>
+            <div className="form-inline mt-3">
+              <label className="checkbox-box">
+                text
+                <input type="checkbox" onClick={() => checkboxToggle("text")} />
+                <span className="checkmark" />
+              </label>
+              <label className="checkbox-box">
+                image
                 <input
-                  className="form-control mr-2"
-                  type="text"
-                  id="search-input"
-                  placeholder="Search"
+                  type="checkbox"
+                  onClick={() => checkboxToggle("image")}
                 />
-              </div>
-            ) : selectedOption === "image" ? (
-              <div className="search-content">
-                <UploadInput label="Upload Image" />
-              </div>
-            ) : (
-              <div className="search-content">
-                <UploadInput label="Upload Video" />
-              </div>
-            )}
-            <button
-              className="btn search-btn ml-2"
-              type="button"
-              onClick={onSearch}
-            >
-              <FontAwesomeIcon icon={faSearch} color="#fff" />
-            </button>
-          </div>
-          <div className="form-inline mt-3">
-            <label className="checkbox-box">
-              text
-              <input type="checkbox" onClick={() => checkboxToggle("text")} />
-              <span className="checkmark" />
-            </label>
-            <label className="checkbox-box">
-              image
-              <input type="checkbox" onClick={() => checkboxToggle("image")} />
-              <span className="checkmark" />
-            </label>
-            <label className="checkbox-box">
-              video
-              <input type="checkbox" onClick={() => checkboxToggle("video")} />
-              <span className="checkmark" />
-            </label>
-          </div>
-        </form>
+                <span className="checkmark" />
+              </label>
+              <label className="checkbox-box">
+                video
+                <input
+                  type="checkbox"
+                  onClick={() => checkboxToggle("video")}
+                />
+                <span className="checkmark" />
+              </label>
+            </div>
+          </form>
+        </div>
+        <div className="search-result container mt-5">
+          {/* empty cards for loading */}
+          {/* {props.fetch.loading ? <Loading /> : null} */}
+          {/* spinner for loading */}
+          {props.fetch.loading ? <Spinner /> : null}
+          <div className="card-columns">{displayResults(props.fetch.data)}</div>
+        </div>
       </div>
-      <div className="search-result container mt-5">
-        {/* empty cards for loading */}
-        {/* {props.fetch.loading ? <Loading /> : null} */}
-        {/* spinner for loading */}
-        {props.fetch.loading ? <Spinner /> : null}
-        <div className="card-columns">{displayResults(props.fetch.data)}</div>
-      </div>
-    </div>
-  );
+    );
+  } else {
+    props.error("Permission denied");
+    return null;
+  }
 }
 
 SearchInput.propTypes = {
-  data: PropTypes.array.isRequired,
+  data: PropTypes.array,
   search: PropTypes.func.isRequired,
-  contentLoading: PropTypes.func.isRequired
+  contentLoading: PropTypes.func.isRequired,
+  error: PropTypes.func.isRequired,
+  user: PropTypes.object
 };
 
 const mapStateToProps = state => ({
-  fetch: state.fetch
+  fetch: state.fetch,
+  user: state.user
 });
 
 export default connect(
   mapStateToProps,
-  { search, contentLoading }
+  { search, contentLoading, error }
 )(SearchInput);

@@ -54,9 +54,9 @@
 .subheading1 {
   font-family: VisbyRoundCF-DemiBold;
   font-size: 28px;
-  color: rgba(0, 0, 0, 1); 
+  color: rgba(0, 0, 0, 1);
   letter-spacing: -0.82px;
-  line-height:1.4em;
+  line-height: 1.4em;
   margin-bottom: 0.2em;
 }
 .subheading2 {
@@ -109,7 +109,8 @@ a:hover {
 }
 
 /** CARD **/
-.card {
+
+.card-modify {
   height: 350px;
   box-shadow: 10px 5px 5px rgb(87, 85, 85);
   background-color: #ea6565 !important;
@@ -117,15 +118,15 @@ a:hover {
   border: 2px solid #ea6565 !important;
 }
 
-.card-footer {
+.card-modify-footer {
   height: 5px !important;
 }
 
-.card > img {
+.card-modify > img {
   height: 100%;
 }
 
-.card:hover {
+.card-modify:hover {
   box-shadow: 10px 5px 5px rgb(20, 20, 20);
   cursor: pointer;
 }
@@ -150,6 +151,16 @@ a:hover {
   .navbar .hide {
     display: none;
   }
+}
+
+/* REGISTER FORM*/
+.card-register {
+  box-shadow: 2px 2px 4px 4px #252424 !important;
+  background-color: #ea6565 !important;
+}
+.register-btn {
+  background-color: #a84545 !important;
+  color: #fff !important;
 }
 
 /** FOOTER **/

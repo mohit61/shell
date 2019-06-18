@@ -1,13 +1,13 @@
 import React from "react";
 
-export const Footer = props => {
+export const Footer = ({ footerClass, alert_type, closeFooter, message }) => {
   return (
-    <div className={props.footerClass}>
-      <div className={`alert alert-${props.alert_type}`}>
-        <button className="close" type="button" onClick={props.closeFooter}>
+    <div className={footerClass}>
+      <div className={`alert alert-${alert_type}`}>
+        <button className="close" type="button" onClick={closeFooter}>
           <span>&times;</span>
         </button>
-        <strong>{props.message}</strong>
+        <strong>{message}</strong>
       </div>
     </div>
   );

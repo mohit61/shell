@@ -45,13 +45,10 @@ class FooterSite extends Component {
     // } else
 
     if (!IsEmpty(errors)) {
-      console.log("hi");
-      const test = {};
-      console.log(IsEmpty(test));
       return (
         <Footer
           alert_type="danger"
-          message={errors.msg}
+          message={errors}
           footerClass={this.state.footerClass}
           closeFooter={() => {
             this.setState({

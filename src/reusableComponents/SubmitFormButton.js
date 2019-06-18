@@ -1,9 +1,13 @@
 import React from "react";
+import classnames from "classnames";
 
-export default props => {
+export default ({ text, colored }) => {
   return (
-    <button type="submit" className="btn btn-submit btn-block mt-4">
-      {props.submit_button_text}
+    <button
+      type="submit"
+      className={classnames("btn btn-block mt-4", { "btn-submit": colored })}
+    >
+      {text}
     </button>
   );
 };
