@@ -8,8 +8,8 @@ class FooterSite extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      errors: {},
-      footerClass: "footer text-center"
+      errors: "Server Down",
+      visible: true
     };
   }
 
@@ -22,37 +22,17 @@ class FooterSite extends Component {
   }
 
   render() {
-    // WHEN ERROR, WE WILL DISPLAY ERROR
-    // const error = { error: "Server Down" };
-    // WHEN NO ERROR, WE WILL DISPLAY SUCCESS
-    // const error = { error: "" };
-
     const { errors } = this.state;
-
-    // if (IsEmpty(errors)) {
-    //   return (
-    //     <Footer
-    //       alert_type="success"
-    //       message="Success"
-    //       footerClass={this.state.footerClass}
-    //       closeFooter={() => {
-    //         this.setState({
-    //           footerClass: "footer-dismiss"
-    //         });
-    //       }}
-    //     />
-    //   );
-    // } else
 
     if (!IsEmpty(errors)) {
       return (
         <Footer
           alert_type="danger"
           message={errors}
-          footerClass={this.state.footerClass}
+          visible={this.state.visible}
           closeFooter={() => {
             this.setState({
-              footerClass: "footer-dismiss"
+              visible: false
             });
           }}
         />
@@ -64,7 +44,7 @@ class FooterSite extends Component {
 }
 
 FooterSite.prototypes = {
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.string.isRequired
 };
 
 const mapStateToProps = state => ({

@@ -1,14 +1,12 @@
 import React from "react";
+import { Alert } from "reactstrap";
 
-export const Footer = ({ footerClass, alert_type, closeFooter, message }) => {
+export const Footer = ({ visible, alert_type, closeFooter, message }) => {
   return (
-    <div className={footerClass}>
-      <div className={`alert alert-${alert_type}`}>
-        <button className="close" type="button" onClick={closeFooter}>
-          <span>&times;</span>
-        </button>
-        <strong>{message}</strong>
-      </div>
+    <div className="footer text-center">
+      <Alert color={alert_type} isOpen={visible} toggle={closeFooter}>
+        <strong> {message}</strong>
+      </Alert>
     </div>
   );
 };
