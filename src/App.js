@@ -1,6 +1,7 @@
 import React from "react";
-import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "./App.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
+import "./stylesheet.css"
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
@@ -17,6 +18,7 @@ import Sidebar from "./components/Sidebar";
 import Home from "./components/Home";
 import Loading from "./components/Loading";
 import RegisterUser from "./components/RegisterUser";
+import SassApp from "./components/SassApp";
 
 function App() {
   return (
@@ -34,6 +36,8 @@ function App() {
           <Route exact path="/home" component={Home} />
           <Route exact path="/loading" component={Loading} />
           <Route exact path="/register" component={RegisterUser} />
+
+          <Route exact path="/sass" component={SassApp} />
         </div>
       </Router>
     </Provider>
