@@ -44,6 +44,7 @@ function App() {
           <Route exact path="/posts/:id" component={SideNav} />
           <Route exact path="/sidenav" component={SideNav} />
           <Route exact path="/login" component={LoginCard} />
+          <Route exact path="/login" component={LoginCard} />
         </div>
       </Router>
     </Provider>

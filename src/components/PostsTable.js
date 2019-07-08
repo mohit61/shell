@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUpload, faDownload } from "@fortawesome/free-solid-svg-icons";
+import { faUpload, faDownload, faSync } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
@@ -14,6 +14,9 @@ import axios from "axios";
 import { fetchPosts } from "../actions/fetchData";
 //components
 import { HeadingTwo } from "../reusableComponents/text/HeadingTwo";
+
+//todo import from an external file;
+const SHELL_SERVER_API_ENDPOINT = "http://13.233.110.23:8080/posts";
 
 class PostsTable extends Component {
   constructor(props) {
@@ -29,14 +32,14 @@ class PostsTable extends Component {
       loading: true,
       columns: [
         {
-          dataField: "title",
+          dataField: "type",
           text: "Title"
           // sort: true
         },
         {
-          dataField: "description",
-          text: "Description"
-          // sort: true
+          dataField: "filename",
+          text: "Description",
+          formatter: this.previewFormatter
         },
         {
           dataField: "tags",
@@ -52,6 +55,27 @@ class PostsTable extends Component {
         }
       ]
     };
+
+    this.refresh = this.refresh.bind(this);
+  }
+
+  previewFormatter(cell, row) {
+    console.log('row');
+    console.log(row);
+    if(row.type=='image'){
+      return(
+        <img 
+          src={`https://firebasestorage.googleapis.com/v0/b/crowdsourcesocialposts.appspot.com/o/bot-posts%2F${cell}?alt=media&token=88192814-45bb-4302-b409-b5c26e90390b`}
+          style={imgStyle}
+          alt='preview'
+          ></img>
+      )
+    }else if(row.type=='video'){
+      return(
+        <video src={`https://firebasestorage.googleapis.com/v0/b/crowdsourcesocialposts.appspot.com/o/bot-posts%2F${cell}?alt=media&token=88192814-45bb-4302-b409-b5c26e90390b`}/>
+      )
+    }
+    
   }
 
   componentDidMount() {
@@ -62,14 +86,13 @@ class PostsTable extends Component {
     console.log("data", this.props.fetch.data);
   }
 
-  //TODO : change this life cycle method.
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.fetch.data) {
-      this.setState({
-        data: nextProps.fetch.data
-      });
-    }
+  refresh(){
+    console.log('refreshing');
+    this.props.fetchPosts(SHELL_SERVER_API_ENDPOINT);
   }
+
+  //TODO : change this life cycle method.
+ 
   // static getDerivedStateFromProps(nextProps, prevState) {
   //   if (nextProps.fetch) {
   //     return {
@@ -106,6 +129,12 @@ class PostsTable extends Component {
           <button className="btn btn-sm btn-color-white-one mr-3">
             <FontAwesomeIcon icon={faUpload} /> Upload
           </button>
+          <Button variant="light" 
+            size="sm"
+            onClick={this.refresh}
+            >
+            <FontAwesomeIcon icon={faSync} />
+          </Button>
           <Button variant="color-primary-one" size="sm">
             <FontAwesomeIcon icon={faDownload} /> Download
           </Button>
@@ -114,7 +143,7 @@ class PostsTable extends Component {
           striped
           hover
           keyField="id"
-          data={this.state.data}
+          data={this.props.fetch.data}
           columns={this.state.columns}
           filter={filterFactory()}
           pagination={paginationFactory()}
@@ -139,3 +168,10 @@ export default withRouter(
     { fetchPosts }
   )(PostsTable)
 );
+
+
+const imgStyle = {
+  width: '150px',
+  height: '150px',
+  objectFit: 'contain'
+}

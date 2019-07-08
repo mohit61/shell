@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6a05b5a7.chunk.css",
+    "main.js": "/static/js/main.fb94dab5.chunk.js",
+    "main.js.map": "/static/js/main.fb94dab5.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+    "static/js/2.6874ae4d.chunk.js": "/static/js/2.6874ae4d.chunk.js",
+    "static/js/2.6874ae4d.chunk.js.map": "/static/js/2.6874ae4d.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.6a1df1260a3a667380370b16ae59186e.js": "/precache-manifest.6a1df1260a3a667380370b16ae59186e.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.6a05b5a7.chunk.css.map": "/static/css/main.6a05b5a7.chunk.css.map",
+    "static/media/app1.css": "/static/media/VisbyRoundCF-Regular.6f569974.woff"
+  }
+}
